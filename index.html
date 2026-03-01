@@ -5,75 +5,125 @@
   <title>Quick WhatsApp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- App Icon -->
   <link rel="icon" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
   <meta name="theme-color" content="#22c55e">
-</head>
 
-  
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: #0f172a;
-      color: #fff;
+      color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
+
     .box {
       background: #020617;
-      padding: 20px;
-      border-radius: 12px;
+      padding: 22px;
+      border-radius: 14px;
       width: 100%;
       max-width: 320px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
     }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
     input {
       width: 100%;
       padding: 12px;
       font-size: 16px;
       border-radius: 8px;
       border: none;
-      margin-bottom: 15px;
       outline: none;
+      margin-bottom: 15px;
     }
+
     button {
       width: 100%;
       padding: 12px;
       font-size: 16px;
       border-radius: 8px;
       border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .chat-btn {
       background: #22c55e;
       color: #000;
-      font-weight: bold;
-      cursor: pointer;
     }
-    button:hover {
+
+    .chat-btn:hover {
       background: #16a34a;
     }
+
+    .hi-btn {
+      margin-top: 10px;
+      background: #38bdf8;
+      color: #000;
+    }
+
+    .hi-btn:hover {
+      background: #0ea5e9;
+    }
+
     small {
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
       color: #94a3b8;
     }
   </style>
 </head>
+
 <body>
 
   <div class="box">
     <h2>Quick WhatsApp</h2>
-    <input type="tel" id="number" placeholder="Enter 10-digit number">
-    <button onclick="openChat()">Open Chat</button>
-    <small>+91 added automatically</small>
+
+    <input
+      type="tel"
+      id="number"
+      placeholder="Enter 10-digit number"
+      maxlength="10"
+    >
+
+    <button class="chat-btn" onclick="openChat()">Open Chat</button>
+    <button class="hi-btn" onclick="openChatWithHi()">Say Hi 👋</button>
+
+    <small>+91 is added automatically</small>
   </div>
 
   <script>
+    function getNumber() {
+      return document.getElementById("number").value.trim();
+    }
+
+    function isValid(num) {
+      return num.length === 10 && !isNaN(num);
+    }
+
     function openChat() {
-      let num = document.getElementById("number").value.trim();
-      if (num.length === 10 && !isNaN(num)) {
+      const num = getNumber();
+      if (isValid(num)) {
         window.location.href = "https://wa.me/91" + num;
+      } else {
+        alert("Please enter a valid 10-digit number");
+      }
+    }
+
+    function openChatWithHi() {
+      const num = getNumber();
+      if (isValid(num)) {
+        window.location.href =
+          "https://wa.me/91" + num + "?text=" + encodeURIComponent("Hi");
       } else {
         alert("Please enter a valid 10-digit number");
       }
@@ -81,8 +131,4 @@
   </script>
 
 </body>
-
 </html>
-
-
-
