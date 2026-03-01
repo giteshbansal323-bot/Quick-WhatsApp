@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quick WhatsApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #020617;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background: #22c55e;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #16a34a;
+    }
+    small {
+      display: block;
+      margin-top: 10px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Quick WhatsApp</h2>
+    <input type="tel" id="number" placeholder="Enter 10-digit number">
+    <button onclick="openChat()">Open Chat</button>
+    <small>+91 added automatically</small>
+  </div>
+
+  <script>
+    function openChat() {
+      let num = document.getElementById("number").value.trim();
+      if (num.length === 10 && !isNaN(num)) {
+        window.location.href = "https://wa.me/91" + num;
+      } else {
+        alert("Please enter a valid 10-digit number");
+      }
+    }
+  </script>
+
+</body>
+</html>
